@@ -1,20 +1,17 @@
 import express from "express";
-
-// Importando hbs
 import hbs from "hbs";
+import "dotenv/config";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT; // variables de entorno (.ENV)
 
 // Construyendo rutas absolutas
 const { pathname } = new URL('.', import.meta.url);
 const __dirname = pathname.substring(1); // no usar en UNIX
 
 
-// Configuraciones para renderizar vistas con Handlebars
+// Handlebars
 app.set('view engine', 'hbs');
-
-// Registrando partials de hbs
 hbs.registerPartials(__dirname + '/views/partials');
 
 // Configuraciones para servir contenido estatico
