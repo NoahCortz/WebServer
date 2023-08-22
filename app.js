@@ -1,5 +1,8 @@
 import express from "express";
 
+// Importando hbs
+import hbs from "hbs";
+
 const app = express();
 const port = 3000;
 
@@ -7,16 +10,36 @@ const port = 3000;
 const { pathname } = new URL('.', import.meta.url);
 const __dirname = pathname.substring(1); // no usar en UNIX
 
+
+// Configuraciones para renderizar vistas con Handlebars
+app.set('view engine', 'hbs');
+
+// Registrando partials de hbs
+hbs.registerPartials(__dirname + '/views/partials');
+
 // Configuraciones para servir contenido estatico
 app.use( express.static('public') );
 
 // Mis rutas
+app.get('/', (req, res) => {
+    res.render('home', {
+        title: 'Road Trip',
+        name: 'Noe Cortez'
+    });
+});
+
 app.get('/generic', (req, res) => {
-    res.sendFile(__dirname + '/public/generic.html');
+    res.render('generic', {
+        title: 'Road Trip',
+        name: 'Noe Cortez'
+    });
 });
 
 app.get('/elements', (req, res) => {
-    res.sendFile(__dirname + '/public/elements.html');
+    res.render('elements', {
+        title: 'Road Trip',
+        name: 'Noe Cortez'
+    });
 });
 
 app.get('*', (req, res) => {

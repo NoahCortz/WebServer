@@ -23,6 +23,7 @@ Para levantar el proyecto se necesitan seguir los siguientes pasos:
 
 * [Documentación de expressjs](https://expressjs.com/)
 * [NodeJS](https://nodejs.org/es/docs)
+* [hbs](https://github.com/pillarjs/hbs)
 
 ## Authors ✔️
 
